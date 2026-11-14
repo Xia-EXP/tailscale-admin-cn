@@ -10,7 +10,7 @@ permissions:
 jobs:
   test:
     name: Node.js ${{ matrix.node-version }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -28,6 +28,7 @@ jobs:
       - name: Check module syntax
         shell: bash
         run: find . -type f -name '*.mjs' -print0 | xargs -0 -n1 node --check
+
 
 
 
