@@ -1,5 +1,7 @@
 # Tailscale 中文管理台
 
+[![CI](https://github.com/Xia-EXP/tailscale-admin-cn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Xia-EXP/tailscale-admin-cn/actions/workflows/ci.yml)
+
 一个零运行时依赖的中文 Tailscale 管理台。服务端使用 Node.js 内置模块，前端是原生 JavaScript，无需构建或 npm install。
 
 本项目是社区工具，不是 Tailscale 官方产品。Tailscale 是 Tailscale Inc. 的商标。
