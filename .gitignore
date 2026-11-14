@@ -1,0 +1,38 @@
+# Runtime state and credentials
+data/*
+!data/.gitkeep
+!data/README.md
+ACCESS-URLS.txt
+migration.enc.json
+
+# Local dependencies and bundled binaries
+node_modules/
+runtime/
+
+# Generated files
+*.log
+*.tmp
+*.bak
+*.zip
+artifacts/
+backups/
+
+# Keys, certificates, connection material and exports
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.rdp
+id_rsa*
+id_ed25519*
+known_hosts
+
+# Local editor and OS files
+.env
+.env.*
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,32 @@
+.enrollment-modal { width: min(790px, calc(100vw - 32px)); display: flex; flex-direction: column; overflow: hidden; } /* 使用固定头尾与可滚动正文，保持创建按钮可见。 */
+.enrollment-modal .modal-body { overflow-y: auto; min-height: 0; padding: 18px 24px; } /* 长内容只在弹窗正文滚动，保留底部操作。 */
+.enrollment-modal .modal-foot { border-top: 1px solid var(--line); padding: 15px 24px; flex-shrink: 0; } /* 创建按钮始终保持可见。 */
+#enrollment-content { display: grid; gap: 18px; min-width: 0; } /* 用一致的留白组织三个步骤。 */
+.enrollment-steps { display: flex; justify-content: space-between; gap: 12px; margin: 0; padding: 0 0 16px; border-bottom: 1px solid var(--line); list-style: none; } /* 用状态条表示配置、执行和核对。 */
+.enrollment-steps li { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; } /* 步骤标签保持清晰但不抢主内容。 */
+.enrollment-steps li > span { width: 24px; height: 24px; display: grid; place-items: center; background: var(--panel-hi); border-radius: 50%; } /* 显示步骤编号。 */
+.enrollment-steps .current { color: var(--accent); font-weight: 650; } /* 突出当前需要操作的一步。 */
+.enrollment-steps .complete { color: var(--ok); } /* 完成步骤与尚未执行步骤区分。 */
+.enrollment-platforms { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; } /* 平台选择保持三列清晰卡片。 */
+.enrollment-platform { display: grid; gap: 7px; text-align: left; padding: 15px; border: 1px solid var(--line); border-radius: 8px; color: var(--text); background: var(--panel); cursor: pointer; } /* 平台卡沿用已有主题变量。 */
+.enrollment-platform span { color: var(--muted); font-size: 11px; line-height: 1.5; } /* 系统适用范围说明保持次要层级。 */
+.enrollment-platform.selected { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); } /* 明确标记将生成哪种终端命令。 */
+.enrollment-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } /* 名称与用途在桌面并排展示。 */
+.enrollment-readiness { border: 1px solid var(--line); padding: 15px; border-radius: 8px; background: var(--panel-soft); display: grid; gap: 12px; } /* 把凭证条件与设备配置分开，减少理解负担。 */
+.enrollment-readiness-head, .enrollment-code-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13px; } /* 对齐检查、命令标题和操作按钮。 */
+.enrollment-init { display: grid; gap: 11px; line-height: 1.65; font-size: 12px; } /* 完整展示首次标签初始化的具体变更与确认。 */
+.enrollment-init p { margin: 0; } /* 避免确认区重复留白。 */
+.enrollment-init code { overflow-wrap: anywhere; color: var(--text); } /* 长标签在手机正常换行。 */
+.enrollment-init small, .enrollment-check span { color: var(--muted); line-height: 1.6; } /* 对初始化和加入检查保留真实状态说明。 */
+.enrollment-advanced summary, .enrollment-secret summary { cursor: pointer; color: var(--muted); font-size: 12px; padding: 6px 0; } /* 高级选项与密钥默认收起，突出完整命令。 */
+.enrollment-advanced[open] { display: grid; gap: 12px; } /* 展开时保持表单间距。 */
+.enrollment-advanced .enrollment-fields { margin-top: 12px; } /* 将摘要与输入区隔开。 */
+.enrollment-success { padding: 16px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 8px; } /* 成功区只描述密钥准备或实际查到的设备。 */
+.enrollment-success p { margin: 7px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; } /* 明确用户接下来需要在目标机执行。 */
+.enrollment-summary { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 12px; color: var(--muted); } /* 汇总设备名、平台、用途和注册有效期。 */
+.enrollment-summary strong { color: var(--text); font-weight: 550; } /* 对所选配置做适度强调。 */
+.enrollment-command { display: block; width: 100%; height: 280px; box-sizing: border-box; resize: vertical; padding: 16px; border: 1px solid var(--line); border-radius: 8px; color: var(--text); background: var(--panel-soft); font-size: 11px; line-height: 1.8; white-space: pre; overflow: auto; } /* 完整脚本可选择、复制和滚动，不撑破手机页面。 */
+.enrollment-check { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; } /* 给新设备检查提供明确操作与可读结果。 */
+.enrollment-error { overflow-wrap: anywhere; } /* 官方或本地错误保持在弹窗宽度内。 */
+@media (max-width: 600px) { body:has(#modal-root.open) .toasts { top: 8px; bottom: auto; right: 10px; left: 10px; pointer-events: none; } body:has(#modal-root.open) .toasts .toast:not(:last-child) { display: none; } } /* 手机弹窗的复制提示移到顶部，仅显示最新一条，避免遮挡或截获底部操作。 */
+@media (max-width: 600px) { .enrollment-modal { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); } .enrollment-modal .modal-body, .enrollment-modal .modal-foot { padding: 14px; } .enrollment-platform { padding: 11px 8px; } .enrollment-platform span { font-size: 10px; } .enrollment-fields { grid-template-columns: 1fr; } .enrollment-steps { gap: 5px; } .enrollment-steps li { font-size: 10px; gap: 5px; } .enrollment-code-head { align-items: flex-start; flex-direction: column; } .enrollment-code-head .btn { width: 100%; } .enrollment-command { height: 250px; } .enrollment-modal .modal-foot .btn-primary { white-space: normal; height: auto; min-height: 40px; } } /* 手机上保留所有步骤、复制与错误信息。 */

@@ -1,0 +1,50 @@
+<!doctype html> <!-- 使用现代 HTML 文档模式。 -->
+<html lang="zh-CN" data-theme="light"> <!-- 默认中文浅色主题。 -->
+<head> <!-- 声明元信息和样式。 -->
+  <meta charset="utf-8" /> <!-- 支持中文设备名。 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- 适配移动端。 -->
+  <title>Tailscale · 中文管理台</title> <!-- 标明本地中文管理台。 -->
+  <meta name="color-scheme" content="light dark" /> <!-- 支持主题色。 -->
+  <link rel="icon" href="data:," /> <!-- 避免请求缺失图标。 -->
+  <link rel="stylesheet" href="/styles.css" /> <!-- 保留已有表单基础样式。 -->
+  <link rel="stylesheet" href="/console.css" /> <!-- 保留节点布局和弹窗显隐修复。 -->
+  <link rel="stylesheet" href="/official.css" /> <!-- 应用官方式顶部导航与表格视觉。 -->
+  <link rel="stylesheet" href="/enrollment.css" /> <!-- 为添加机器的配置、复制与检查步骤提供响应式布局。 -->
+  <link rel="stylesheet" href="/fleet.css"> <!-- 多设备终端工作台的响应式布局。 -->
+</head> <!-- 结束元信息。 -->
+<body> <!-- 开始应用主体。 -->
+  <div class="app-shell"> <!-- 单列控制台布局。 -->
+    <header class="console-header"> <!-- 展示品牌、身份和导航。 -->
+      <div class="topbar"> <!-- 顶部排列网络身份与工具。 -->
+        <a class="brand" href="#devices" data-tab="devices" aria-label="Tailscale 设备"> <!-- 品牌回到设备页。 -->
+          <svg class="tailscale-mark" viewBox="0 0 32 32" aria-hidden="true"><g fill="currentColor"><circle cx="5" cy="5" r="3" opacity=".35"/><circle cx="16" cy="5" r="3" opacity=".35"/><circle cx="27" cy="5" r="3" opacity=".35"/><circle cx="5" cy="16" r="3"/><circle cx="16" cy="16" r="3"/><circle cx="27" cy="16" r="3"/><circle cx="5" cy="27" r="3" opacity=".35"/><circle cx="16" cy="27" r="3" opacity=".35"/><circle cx="27" cy="27" r="3" opacity=".35"/></g></svg> <!-- 点阵标志呼应官方结构。 -->
+          <strong>Tailscale</strong><span class="locale-label">中文管理台</span> <!-- 明确中文本地版本。 -->
+        </a> <!-- 结束品牌。 -->
+        <div class="workspace-label" id="workspace-name">我的网络</div> <!-- 显示实际网络名。 -->
+        <div class="topbar-actions"> <!-- 汇集运行状态和刷新。 -->
+          <span class="pill pill-muted" id="conn-pill">连接中</span> <!-- 展示真实凭证状态。 -->
+          <span class="mock-flag hidden" id="foot-mock">演示模式</span> <!-- 演示身份标记。 -->
+          <span class="side-ver" id="side-ver">v1.17.0</span> <!-- 展示后端实际版本。 -->
+          <button class="btn btn-sm header-notices" id="btn-notices" type="button" data-act="notices-open">提醒</button> <!-- 查看节点异常和密钥到期提醒。 -->
+          <button class="icon-btn" id="btn-refresh" type="button" title="刷新当前页面" aria-label="刷新当前页面">↻</button> <!-- 刷新当前功能。 -->
+          <button class="icon-btn" id="btn-theme" type="button" title="切换深浅色" aria-label="切换深浅色"></button> <!-- 保留主题偏好。 -->
+        </div> <!-- 结束工具栏。 -->
+      </div> <!-- 结束身份行。 -->
+      <nav class="nav" id="nav" aria-label="主导航"></nav> <!-- 渲染顶部导航。 -->
+    </header> <!-- 结束控制台头部。 -->
+    <div class="main"> <!-- 承载功能页面。 -->
+      <div id="runtime-notice" class="runtime-notice hidden" role="status"></div> <!-- 说明演示和版本不一致。 -->
+      <div class="sr-only"><h1 id="page-title">设备</h1><p id="page-sub"></p></div> <!-- 为辅助技术保留当前页标题。 -->
+      <main id="view" class="view" aria-live="polite"></main> <!-- 展示实际管理内容。 -->
+      <footer class="console-footer"><span id="side-local"></span><span>本地运行 · 中文界面 · 客户端实时节点</span></footer> <!-- 说明客户端身份与数据来源。 -->
+    </div> <!-- 结束正文。 -->
+  </div> <!-- 结束应用布局。 -->
+  <div id="toasts" class="toasts" aria-live="polite" aria-atomic="false"></div> <!-- 显示操作反馈。 -->
+  <div id="modal-root" class="modal-root" role="dialog" aria-modal="true" aria-label="对话框"></div> <!-- 通过 open 状态控制弹窗。 -->
+  <div id="drawer-root" class="drawer-root" role="dialog" aria-modal="true" aria-label="设备详情"> <!-- 展示节点详情。 -->
+    <div class="drawer-backdrop" data-close="drawer"></div> <!-- 点击遮罩关闭详情。 -->
+    <aside class="drawer" id="drawer" tabindex="-1"></aside> <!-- 容纳管理或只读信息。 -->
+  </div> <!-- 结束抽屉。 -->
+  <script src="/app.js" type="module"></script> <!-- 加载零依赖前端。 -->
+</body> <!-- 结束主体。 -->
+</html> <!-- 结束文档。 -->

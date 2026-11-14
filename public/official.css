@@ -1,0 +1,214 @@
+:root, [data-theme="light"] { --bg: #fff; --panel: #fff; --panel-soft: #f8f9fa; --panel-hi: #f3f4f5; --text: #242424; --muted: #6c6c6c; --faint: #959595; --line: #e5e5e5; --accent: #2563d9; --accent-soft: #edf3ff; --shadow: none; --header-bg: #faf9f7; color-scheme: light; } /* 使用官方控制台中性色和蓝色操作。 */
+[data-theme="dark"] { --bg: #17191c; --bg-2: #1c1f23; --panel: #202327; --panel-soft: #25292e; --panel-hi: #2e3339; --text: #e6e8ec; --text-2: #c3c9d2; --muted: #a6adb6; --faint: #818994; --line: #383d44; --line-soft: #30353d; --accent: #83afff; --accent-soft: #253750; --ok: #6dd6a7; --ok-soft: #163d31; --warn: #eac078; --warn-soft: #443820; --danger: #ff9eaa; --danger-soft: #492b32; --info: #94bbff; --info-soft: #273b59; --header-bg: #202226; color-scheme: dark; } /* 为文字、状态和表单提供完整深色主题变量。 */
+body { background: var(--bg); color: var(--text); font-size: 14px; } /* 中文正文采用易读字号。 */
+.app-shell { display: block; min-height: 100vh; } /* 移除旧侧栏占位。 */
+.main { margin: 0; min-width: 0; width: 100%; } /* 正文使用完整窗口宽度。 */
+.console-header { background: var(--header-bg); border-bottom: 1px solid var(--line); } /* 使用官方暖灰导航背景。 */
+.topbar { max-width: 1320px; margin: auto; min-height: 76px; padding: 18px 32px; background: transparent; border: 0; position: static; display: flex; align-items: center; gap: 24px; } /* 顶部排列品牌、网络和工具。 */
+.brand { display: flex; align-items: center; gap: 11px; color: var(--text); padding: 0; flex: none; text-decoration: none; } /* 采用横向品牌排版。 */
+.brand strong { font-size: 23px; letter-spacing: -.6px; font-weight: 700; } /* 保持紧凑的品牌文字。 */
+.tailscale-mark { width: 29px; height: 29px; flex: none; } /* 固定点阵标志尺寸。 */
+.locale-label { font-size: 11px; color: var(--muted); border: 1px solid var(--line); padding: 3px 7px; border-radius: 5px; } /* 标明中文本地版本。 */
+.workspace-label { padding-left: 22px; border-left: 1px solid var(--line); color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } /* 长网络名自动截断。 */
+.topbar-actions { margin-left: auto; gap: 10px; flex-shrink: 0; } /* 工具对齐右侧。 */
+.side-ver { color: var(--muted); font-size: 11px; } /* 显示实际后端版本。 */
+.nav { max-width: 1320px; margin: auto; padding: 0 32px; display: flex; flex-direction: row; align-items: stretch; gap: 25px; overflow: visible; border: 0; } /* 覆盖旧侧栏纵向方向以复现顶部导航。 */
+.nav-item { display: flex; gap: 8px; align-items: center; width: auto; min-height: 49px; padding: 10px 0 13px; border-radius: 0; border: 0; border-bottom: 3px solid transparent; color: var(--muted); background: transparent; font-size: 13px; white-space: nowrap; } /* 导航采用底部指示条。 */
+.nav-item svg { width: 17px; height: 17px; } /* 对齐中文和图标。 */
+.nav-item:hover { color: var(--text); background: transparent; } /* 保持轻量悬停反馈。 */
+.nav-item.active { color: var(--accent); background: transparent; border-bottom-color: var(--accent); box-shadow: none; } /* 当前页使用蓝色下划线。 */
+.nav-badge { display: none; } /* 数量统一放在表格上方。 */
+.nav-more { position: relative; margin-left: auto; } /* 次要工具放进更多菜单。 */
+.nav-more summary, .row-menu summary { cursor: pointer; list-style: none; } /* 统一菜单点击体验。 */
+.nav-more summary::-webkit-details-marker, .row-menu summary::-webkit-details-marker { display: none; } /* 移除浏览器默认标记。 */
+.nav-more-list { position: absolute; right: 0; top: 48px; width: 190px; z-index: 30; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 7px; box-shadow: 0 8px 24px #0002; } /* 更多菜单浮在正文之上。 */
+.nav-more-list .nav-item { width: 100%; min-height: 36px; padding: 8px 10px; border: 0; border-radius: 4px; } /* 保持菜单项的点击区域。 */
+.nav-more-list .nav-item:hover { background: var(--panel-soft); } /* 标记悬停菜单项。 */
+.view { max-width: 1256px; padding: 48px 32px 64px; margin: auto; width: 100%; min-height: 70vh; } /* 按官方表格页安排宽度和留白。 */
+.page-head { margin-bottom: 28px; align-items: center; } /* 分开标题和搜索区域。 */
+.page-head h2 { font-size: 29px; font-weight: 650; letter-spacing: -.6px; } /* 使用官方式页面大标题。 */
+.page-head p { font-size: 13px; margin-top: 8px; line-height: 1.7; } /* 保持说明清晰可读。 */
+.page-foot { font-size: 11px; } /* 弱化辅助统计。 */
+.btn { font-size: 13px; height: 37px; border-radius: 6px; padding: 0 14px; font-weight: 500; } /* 统一操作按钮。 */
+.btn-primary, [data-theme="light"] .btn-primary { color: white; background: #2563d9; border-color: #2563d9; } /* 主操作使用官方式蓝色。 */
+.btn-primary:hover, [data-theme="light"] .btn-primary:hover { background: #1c50b6; border-color: #1c50b6; color: white; } /* 主按钮悬停时加深。 */
+.btn-sm { height: 34px; font-size: 12px; } /* 次要操作保持紧凑。 */
+.icon-btn { border-color: var(--line); background: var(--panel); color: var(--muted); border-radius: 6px; font-size: 19px; } /* 统一工具按钮。 */
+.input, .select { height: 40px; font-size: 13px; background: var(--panel); } /* 调整搜索框尺寸。 */
+.official-filter-bar { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; flex-wrap: wrap; } /* 搜索与筛选共用一行。 */
+.official-filter-bar .search-wrap { max-width: none; width: 430px; flex: 1; min-width: 220px; } /* 搜索框优先占用可用空间。 */
+.search-wrap > svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--muted); pointer-events: none; } /* 定位搜索图标。 */
+.search-wrap .input { padding-left: 37px; width: 100%; } /* 避免图标覆盖输入文字。 */
+.filter-details { position: relative; } /* 锚定筛选下拉。 */
+.filter-details summary { list-style: none; display: flex; align-items: center; gap: 8px; cursor: pointer; } /* 使用真实可展开筛选。 */
+.filter-options { position: absolute; right: 0; top: 44px; z-index: 20; width: 180px; padding: 8px; border: 1px solid var(--line); background: var(--panel); box-shadow: 0 8px 20px #0002; border-radius: 7px; } /* 展示真实可用的筛选项。 */
+.filter-options button { display: block; width: 100%; text-align: left; border: 0; background: transparent; color: var(--text); padding: 9px; cursor: pointer; border-radius: 4px; } /* 每项都能独立点击。 */
+.filter-options button:hover, .filter-options button.active { background: var(--accent-soft); color: var(--accent); } /* 标明当前筛选。 */
+.active-filters { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; min-height: 28px; } /* 展示官方式筛选标签。 */
+.filter-chip { color: var(--muted); border: 1px solid var(--line); border-radius: 5px; background: var(--panel-soft); font-size: 12px; padding: 4px 9px; cursor: pointer; } /* 提供可点击的状态筛选。 */
+.filter-chip.active { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); } /* 强调当前条件。 */
+.count-label { font-size: 12px; font-weight: 600; margin: 20px 0 12px; color: var(--text); } /* 显示实际结果数。 */
+.count-label span { font-weight: 400; color: var(--muted); margin-left: 5px; } /* 区分采集时间与数量。 */
+.official-table-wrap { position: relative; border: 0; border-radius: 0; background: transparent; padding-bottom: 120px; margin-bottom: -100px; } /* 约束辅助标题的绝对定位并预留末行菜单空间。 */
+.nav-more:not([open]) > .nav-more-list { display: none; } /* 未展开的工具菜单不参与溢出布局。 */
+.machine-name { display: block; } /* 名称与拥有者或标签按官方习惯分行展示。 */
+.table { width: 100%; font-size: 13px; } /* 统一表格正文。 */
+.table th { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .025em; padding: 12px 15px; background: transparent; border-bottom: 1px solid var(--line); } /* 使用白色表头和细线。 */
+.table td { padding: 20px 15px; border-bottom: 1px solid var(--line); vertical-align: middle; } /* 设备行保留官方式间距。 */
+.table th:first-child, .table td:first-child { padding-left: 0; } /* 首列与标题左对齐。 */
+.table tbody tr:hover { background: var(--panel-soft); } /* 悬停帮助横向阅读。 */
+.devices-table { table-layout: fixed; } /* 避免长地址挤压名称。 */
+.devices-table th:nth-child(1) { width: 34%; } /* 名称优先分配空间。 */
+.devices-table th:nth-child(2) { width: 25%; } /* 地址保留独立列。 */
+.devices-table th:nth-child(3), .devices-table th:nth-child(4) { width: 18%; } /* 版本和最后在线各占一列。 */
+.devices-table th:nth-child(5) { width: 5%; } /* 操作采用窄列。 */
+.machine-identity { display: inline-block; vertical-align: middle; min-width: 0; max-width: 100%; } /* 支持批量选择框和名称同行。 */
+.machine-name, .relay-name { color: var(--text); border: 0; background: transparent; padding: 0; font: inherit; font-weight: 650; cursor: pointer; text-align: left; overflow-wrap: anywhere; } /* 点击名称进入详情。 */
+.machine-name:hover, .relay-name:hover { color: var(--accent); text-decoration: underline; } /* 明确名称可点击。 */
+.machine-owner, .cell-sub, .relay-name small { display: block; color: var(--muted); font-size: 11px; margin-top: 5px; line-height: 1.6; overflow-wrap: anywhere; } /* 展示拥有者和辅助信息。 */
+.owner-tag, .machine-badge { display: inline-block; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; color: var(--muted); font-size: 10px; line-height: 1.6; margin: 5px 5px 0 0; } /* 以轻量标签表示设备属性。 */
+.owner-tag { font-family: var(--mono); } /* 标签保留代码辨识度。 */
+.badge-blue { color: var(--accent); background: var(--accent-soft); } /* 强调当前出口。 */
+.badge-warning { color: var(--warn); } /* 待批准保持警示语义。 */
+.address-copy { display: inline-flex; align-items: center; gap: 7px; border: 0; padding: 0; background: transparent; color: var(--text); font: inherit; font-family: var(--mono); font-size: 12px; cursor: pointer; max-width: 100%; overflow-wrap: anywhere; text-align: left; text-decoration: underline dotted var(--faint); text-underline-offset: 4px; } /* 地址使用点线并支持复制。 */
+.address-copy svg { width: 13px; height: 13px; opacity: 0; flex: none; } /* 复制图标在悬停时显示。 */
+.address-copy:hover svg, .address-copy:focus-visible svg { opacity: .7; } /* 支持鼠标和键盘反馈。 */
+.ipv6-address { max-width: 225px; font-size: 9px; } /* 完整 IPv6 允许换行。 */
+.version-label { font-family: var(--mono); font-size: 12px; overflow-wrap: anywhere; } /* 版本使用等宽文字。 */
+.version-update { color: var(--warn); margin-right: 5px; } /* 提示版本可更新。 */
+.last-seen { display: flex; align-items: center; gap: 7px; font-size: 12px; } /* 在线点与时间同行。 */
+.connected-dot, .disconnected-dot, .unknown-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; display: inline-block; background: #2da66b; } /* 在线采用绿色状态点。 */
+.disconnected-dot { background: #b0b2b7; } /* 离线使用灰色。 */
+.unknown-dot { background: #d19b30; } /* 状态未知独立显示。 */
+.row-menu { position: relative; } /* 锚定末列菜单。 */
+.row-menu summary { color: var(--muted); padding: 8px; letter-spacing: 2px; } /* 使用三点操作入口。 */
+.row-menu > div { position: absolute; z-index: 15; right: 0; top: 35px; width: 205px; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 6px 20px #0002; border-radius: 6px; padding: 5px; } /* 操作菜单真实展开。 */
+.row-menu button { width: 100%; text-align: left; background: transparent; border: 0; border-radius: 3px; color: var(--text); padding: 9px 10px; cursor: pointer; font-size: 12px; } /* 每项都有完整点击区。 */
+.row-menu button:hover { background: var(--panel-soft); } /* 菜单悬停反馈。 */
+.row-select { width: 18px; height: 18px; padding: 0; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); color: var(--accent); margin-right: 10px; cursor: pointer; } /* 保留批量选择。 */
+.selected-row { background: var(--accent-soft); } /* 标记选中节点。 */
+.table-note { color: var(--muted); font-size: 12px; line-height: 1.8; margin-top: 25px; } /* 解释来源和节点关系。 */
+.text-button { color: var(--accent); background: transparent; border: 0; padding: 0; font: inherit; cursor: pointer; } /* 文内跳转保持链接视觉。 */
+.runtime-notice { padding: 11px 32px; background: #fff5da; color: #75531a; font-size: 12px; line-height: 1.7; border-bottom: 1px solid #ead4a3; } /* 始终说明演示或版本不一致。 */
+.runtime-notice a { color: inherit; text-decoration: underline; } /* 真实模式入口保持醒目。 */
+.console-footer { max-width: 1256px; margin: 0 auto; border-top: 1px solid var(--line); padding: 18px 32px 28px; display: flex; gap: 18px; justify-content: space-between; color: var(--muted); font-size: 11px; flex-wrap: wrap; } /* 页尾说明客户端与本地运行身份。 */
+#side-local .local-card { border: 0; padding: 0; background: transparent; display: flex; gap: 12px; flex-wrap: wrap; } /* 旧侧栏卡片转为页尾文字。 */
+#side-local .local-name, #side-local .local-meta { color: var(--muted); font-size: 11px; margin: 0; } /* 页尾使用中性文字。 */
+.relay-discovery { display: flex; align-items: center; gap: 14px; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 23%, transparent); border-radius: 7px; padding: 19px 20px; margin-bottom: 18px; } /* 突出实际发现的自建中继。 */
+.discovery-check { color: var(--accent); background: var(--panel); border: 1px solid var(--line); width: 29px; height: 29px; border-radius: 50%; display: grid; place-items: center; flex: none; } /* 显示发现标记。 */
+.relay-discovery strong { font-size: 14px; } /* 清晰展示发现数量。 */
+.relay-discovery p { font-size: 12px; line-height: 1.8; color: var(--muted); margin-top: 5px; overflow-wrap: anywhere; } /* 展示完整域名和端口。 */
+.relay-discovery > .pill { margin-left: auto; flex-shrink: 0; } /* 明确真实与演示来源。 */
+.relay-summary { display: flex; gap: 10px 22px; flex-wrap: wrap; font-size: 11px; color: var(--muted); margin-bottom: 24px; } /* 说明本机和采集时间。 */
+.relay-summary strong { color: var(--text); font-weight: 500; } /* 关键数据采用正文颜色。 */
+.relay-table { min-width: 910px; } /* 多维信息在表格内部滚动。 */
+.relay-table .address-copy { display: flex; margin: 4px 0; } /* 多主机逐行显示。 */
+.port { color: var(--muted); } /* 区分端口和域名。 */
+.latency-value { color: var(--text); font-family: var(--mono); font-size: 15px; } /* 延迟数字便于比较。 */
+.latency-value small { color: var(--muted); font-size: 10px; font-weight: 400; } /* 弱化延迟单位。 */
+.relay-detail { margin-top: 24px; } /* 分隔主表和详情。 */
+.relay-detail-notes { font-size: 12px; line-height: 1.9; color: var(--muted); margin: 15px 0; } /* 解释首选和活动关联。 */
+.relay-detail-notes strong { color: var(--text); font-weight: 500; } /* 说明标签方便扫读。 */
+.pill-accent { color: var(--accent); background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 25%, transparent); } /* 自建中继使用蓝色标记。 */
+.platform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; } /* 添加设备弹窗按平台选择。 */
+.platform-link { border: 1px solid var(--line); border-radius: 7px; padding: 20px 10px; color: var(--text); text-align: center; background: var(--panel); text-decoration: none; } /* 平台入口链接到真实安装页。 */
+.platform-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); } /* 选择平台时提供反馈。 */
+.node-hero { background: var(--panel-soft); border-color: var(--line); } /* 节点监控跟随中性背景。 */
+#btn-theme { display: inline-flex; gap: 6px; width: auto; min-width: 76px; padding: 0 10px; font-size: 12px; align-items: center; justify-content: center; } /* 顶部主题按钮显示明确中文标签。 */
+#btn-theme svg { width: 15px; height: 15px; } /* 主题图标与文字协调显示。 */
+.header-notices { min-width: 56px; } /* 给提醒数量保留稳定位置。 */
+.preference-panel { margin-bottom: 22px; } /* 外观选项与连接配置分开呈现。 */
+.theme-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; } /* 用三张预览卡选择主题。 */
+.theme-option { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 13px; cursor: pointer; color: var(--text); text-align: left; min-width: 0; } /* 每张主题卡都是实际按钮。 */
+.theme-option.active { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); } /* 当前主题选择有明显反馈。 */
+.theme-option small { color: var(--muted); font-size: 11px; } /* 解释手动与系统主题区别。 */
+.theme-preview { display: flex; flex-direction: column; gap: 6px; width: 100%; height: 72px; background: #fafafa; padding: 10px; border: 1px solid #ddd; border-radius: 5px; } /* 用真实布局缩略图预览浅色。 */
+.theme-preview i { height: 7px; width: 75%; background: #dedfe2; border-radius: 2px; } /* 表示标题与表格行。 */
+.theme-preview i:first-child { background: #3976e7; width: 40%; } /* 预览共用的蓝色主操作。 */
+.preview-dark { background: #202327; border-color: #414650; } /* 深色预览不依赖当前主题。 */
+.preview-dark i { background: #454b55; } /* 使用深色中的对比线条。 */
+.preview-system { background: linear-gradient(100deg, #fafafa 50%, #202327 50%); } /* 同时显示浅深两侧以表示跟随系统。 */
+.credentials-panel { margin-bottom: 27px; } /* 区分后台管理令牌与设备注册密钥。 */
+.remote-sheet { margin-top: 18px; } /* 远程运维在连接信息下方形成独立区域。 */
+.remote-sheet .sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; } /* 标题与真实或演示标记保持同排。 */
+.remote-profile { display: grid; grid-template-columns: minmax(0, 2fr) minmax(80px, 1fr); gap: 4px 12px; margin-top: 16px; } /* 账号和端口并排，私钥路径独占一行。 */
+.remote-profile .field { min-width: 0; } /* 长文件路径不会撑开设备抽屉。 */
+.remote-wide { grid-column: 1 / -1; } /* 私钥路径和 sudo 说明使用完整宽度。 */
+.remote-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; } /* 运维按钮在不同宽度自动换行。 */
+.remote-result { margin-top: 18px; border: 1px solid var(--line); border-radius: 8px; padding: 13px; background: var(--panel-soft); } /* 将执行结果与连接表单区分。 */
+.remote-result-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; } /* 同时展示动作和完成状态。 */
+.remote-command { display: block; font-size: 11px; overflow-wrap: anywhere; color: var(--muted); margin: 8px 0; } /* 让用户核对固定执行命令。 */
+.remote-output { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 300px; overflow-y: auto; font: 12px/1.7 var(--mono); color: var(--text); user-select: text; } /* 输出既支持复制又限制长日志高度。 */
+.remote-history { margin-top: 12px; color: var(--muted); font-size: 11px; line-height: 1.9; } /* 折叠展示本次运行的有限任务记录。 */
+.auth-guide-steps { padding-left: 23px; line-height: 1.9; margin: 16px 0; } /* 顺序展示从创建密钥到确认登录的操作。 */
+.auth-guide-steps li { margin-bottom: 8px; } /* 每一步保留清晰阅读间距。 */
+.auth-example { border: 1px solid var(--line); padding: 13px; border-radius: 7px; margin: 13px 0; background: var(--panel-soft); } /* 按系统分组展示可复制命令。 */
+.auth-example .sheet-head { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 10px; } /* 每段命令都有独立的复制入口。 */
+.credential-meta { display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--muted); font-size: 11px; margin-bottom: 20px; } /* 显示当前指纹和最近替换时间。 */
+.credential-meta code { color: var(--text); } /* 指纹可辨识但不显示真实令牌。 */
+.credential-result { margin: 16px 0; } /* 成功或失败状态紧邻操作按钮。 */
+.credential-modes { margin-bottom: 20px; } /* 在令牌输入前明确选择手动或自动续期。 */
+.credentials-panel .callout { margin-bottom: 16px; } /* 让 OAuth 说明和表单保持足够距离。 */
+.oauth-status { display: grid; gap: 9px; color: var(--muted); font-size: 11px; margin: 18px 0; } /* 展示到期与续期时间以便核实自动更新。 */
+.oauth-status strong { display: inline-block; color: var(--text); margin-left: 8px; } /* 提高续期时间辨识度。 */
+.credentials-panel .input-row .input { min-width: 0; } /* 令牌输入不撑破窄屏。 */
+.keys-section-head { margin: 28px 0 17px; } /* 为设备密钥表建立独立标题。 */
+.keys-section-head h3 { font-size: 18px; } /* 明确设备注册密钥类型。 */
+.keys-section-head p { color: var(--muted); font-size: 12px; margin-top: 7px; } /* 解释和管理令牌的用途区别。 */
+.key-secret { border: 1px solid var(--line); background: var(--panel-soft); border-radius: 7px; padding: 16px; margin: 16px 0; overflow-wrap: anywhere; font-size: 13px; user-select: all; } /* 一次性密钥完整可读且不横向溢出。 */
+.notice-list { display: flex; flex-direction: column; gap: 10px; } /* 按条展示真实提醒。 */
+.notice-item { text-align: left; background: var(--panel-soft); color: var(--text); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 6px; padding: 14px; cursor: pointer; } /* 每条提醒可进入对应功能页。 */
+.notice-warn { border-left-color: var(--warn); } /* 异常提醒使用警示色。 */
+.notice-item span, .notice-item small { display: block; color: var(--muted); margin-top: 7px; line-height: 1.7; font-size: 12px; overflow-wrap: anywhere; } /* 内容与操作提示分层显示。 */
+.notice-item small { color: var(--accent); } /* 指示提醒可点击查看。 */
+[data-theme="dark"] .runtime-notice { background: #3b3321; color: #eed59c; border-color: #5c4e2f; } /* 演示提示也适配深色主题。 */
+@media (max-width: 1000px) { /* 中等屏幕减少导航间距。 */
+  .nav { gap: 16px; } /* 导航尽量保持一行。 */
+  .nav-item { font-size: 12px; gap: 5px; } /* 缩小导航项间距。 */
+  .workspace-label, .topbar-actions .side-ver { display: none; } /* 优先保留模式和工具。 */
+} /* 结束中等屏幕适配。 */
+@media (max-width: 700px) { /* 手机保留名称、在线状态和详情入口。 */
+  .topbar { min-height: 65px; padding: 14px 18px; gap: 8px; } /* 减少手机顶部留白。 */
+  .brand strong { font-size: 20px; } /* 为工具保留空间。 */
+  .tailscale-mark { width: 24px; height: 24px; } /* 调整品牌尺寸。 */
+  .locale-label, .topbar-actions #conn-pill, #foot-mock { display: none; } /* 模式由整行提示继续说明。 */
+  .topbar-actions { gap: 5px; } /* 工具不挤出窗口。 */
+  .nav { flex-wrap: wrap; gap: 0 18px; padding: 0 18px; } /* 换行使所有入口可访问。 */
+  .nav-item { font-size: 12px; min-height: 42px; padding: 9px 0; } /* 保持触控高度。 */
+  .nav-more { margin-left: 0; } /* 更多跟随其他导航。 */
+  .nav-more-list { left: auto; right: 0; top: 42px; } /* 更多菜单向左展开以保持在手机屏幕内。 */
+  .nav-more-list .nav-item { padding: 8px 10px; } /* 下拉菜单有足够点击区域。 */
+  .view { padding: 30px 18px 45px; } /* 手机内容与边缘保持适当距离。 */
+  .page-head { align-items: flex-start; gap: 15px; margin-bottom: 24px; } /* 标题和动作自动换行。 */
+  .page-head h2 { font-size: 26px; } /* 手机标题保持突出。 */
+  .page-head p { font-size: 12px; } /* 正文说明保持可读。 */
+  .page-head .toolbar { gap: 6px; } /* 中继动作在手机自动换行。 */
+  .official-filter-bar .search-wrap { width: 100%; min-width: 180px; } /* 手机搜索框使用剩余空间。 */
+  .active-filters { gap: 6px; } /* 筛选胶囊自然换行。 */
+  .filter-chip { font-size: 11px; } /* 缩小筛选宽度。 */
+  .devices-table { min-width: 0; width: 100%; } /* 手机保留名称与状态首屏。 */
+  .devices-table th:nth-child(2), .devices-table td:nth-child(2), .devices-table th:nth-child(3), .devices-table td:nth-child(3) { display: none; } /* 地址版本可从详情查看。 */
+  .devices-table th:nth-child(1) { width: 57%; } /* 名称使用主要宽度。 */
+  .devices-table th:nth-child(4) { width: 33%; } /* 在线状态保留首屏。 */
+  .devices-table th:nth-child(5) { width: 10%; } /* 末列保留操作。 */
+  .devices-table td { padding: 18px 7px; } /* 调整手机表格间距。 */
+  .devices-table td:first-child { padding-left: 0; } /* 名称与标题左对齐。 */
+  .machine-name { font-size: 13px; } /* 长设备名允许换行。 */
+  .last-seen { font-size: 11px; } /* 在线文字不越出屏幕。 */
+  .machine-owner { font-size: 10px; } /* 弱化拥有者文字。 */
+  .row-menu summary { padding: 7px 0; } /* 三点入口适配窄列。 */
+  .relay-discovery { padding: 14px; align-items: flex-start; flex-wrap: wrap; gap: 10px; } /* 自建域名手机顶部可见。 */
+  .relay-discovery > div { flex: 1; min-width: 0; } /* 长主机名允许换行。 */
+  .relay-discovery > .pill { margin-left: 39px; } /* 来源标记另起一行。 */
+  .relay-summary { gap: 7px 16px; } /* 减少采集说明占用。 */
+  .runtime-notice { padding: 10px 18px; } /* 模式提示对齐手机正文。 */
+  .console-footer { padding: 16px 18px; } /* 页尾跟随手机边距。 */
+  .platform-grid { grid-template-columns: repeat(2, 1fr); } /* 手机平台入口改为两列。 */
+  .theme-options { gap: 7px; } /* 主题选择在手机仍保留三列。 */
+  .theme-option { padding: 8px; gap: 6px; } /* 减少预览卡的手机内边距。 */
+  .theme-preview { height: 55px; padding: 7px; } /* 手机缩略图保持辨识度。 */
+  .theme-option small { font-size: 10px; } /* 手机说明允许自然换行。 */
+  #btn-theme { min-width: 65px; padding: 0 7px; } /* 保留主题文字并避免挤压品牌。 */
+  .topbar .brand { gap: 7px; } /* 为提醒与主题入口保留空间。 */
+  .header-notices { min-width: 48px; padding: 0 8px; } /* 提醒在手机上保持紧凑。 */
+} /* 结束手机适配。 */

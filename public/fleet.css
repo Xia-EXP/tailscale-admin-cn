@@ -1,0 +1,17 @@
+.fleet-metrics { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-bottom:18px; } /* 汇总设备、配对、选择和失败数量。 */
+.fleet-metrics > div { display:grid; gap:8px; padding:18px; background:var(--panel); border:1px solid var(--line); border-radius:9px; } /* 保持浅深主题一致。 */
+.fleet-metrics strong { font-size:27px; color:var(--text); } /* 强调需要关注的设备数量。 */
+.fleet-metrics span { font-size:12px; color:var(--muted); } /* 次级说明不干扰主操作。 */
+.fleet-identity { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:18px; margin-bottom:18px; } /* 专用身份与配对入口放在同一区域。 */
+.fleet-identity code { overflow-wrap:anywhere; } /* 公钥摘要在手机换行。 */
+.fleet-toolbar,.fleet-actions { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:14px; } /* 设备筛选和批量动作保持可扫描。 */
+.fleet-toolbar .input { flex:1; min-width:180px; } /* 搜索框使用剩余宽度。 */
+.fleet-toolbar .select,.fleet-actions .select { width:auto; min-width:120px; } /* 不让选择框挤占全部工具栏。 */
+.fleet-results { margin-top:20px; } /* 结果区与设备表清晰分隔。 */
+.fleet-job { padding:12px 0; border-bottom:1px solid var(--line); } /* 每台设备保持独立状态与输出。 */
+.fleet-job summary { display:flex; flex-wrap:wrap; gap:12px; cursor:pointer; font-size:12px; } /* 长主机名和地址可换行。 */
+.fleet-job .remote-output { max-height:300px; overflow:auto; } /* 防止大量输出撑满页面。 */
+.fleet-table table { min-width:720px; } /* 手机上横向滚动整行，避免 IP 和状态被挤成竖排。 */
+.fleet-table .mono { white-space:nowrap; } /* 地址保持完整可读。 */
+[data-theme="dark"] .btn:not(.btn-primary):not(.btn-danger) { background:var(--panel-hi); color:var(--text); border-color:var(--line); } /* 修复深色主题中普通按钮浅底浅字的对比问题。 */
+@media(max-width:700px){.fleet-metrics{grid-template-columns:repeat(2,minmax(0,1fr));}.fleet-identity{align-items:stretch;flex-direction:column;}.fleet-actions .btn{flex:1 1 130px;}.fleet-results .panel-head{align-items:flex-start;flex-direction:column;gap:10px;}} /* 手机支持全部配对、批量动作和任务结果。 */
