@@ -17,9 +17,9 @@ jobs:
         node-version: [18.x, 20.x, 22.x]
     steps:
       - name: Check out source
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - name: Set up Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
           package-manager-cache: false
@@ -28,5 +28,6 @@ jobs:
       - name: Check module syntax
         shell: bash
         run: find . -type f -name '*.mjs' -print0 | xargs -0 -n1 node --check
+
 
 
